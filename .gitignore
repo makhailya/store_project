@@ -77,3 +77,4 @@ temp/
 *.tmp
 *.bak
 htmlcov/
+coverage_report.txt
