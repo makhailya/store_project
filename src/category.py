@@ -1,5 +1,28 @@
-from typing import List
+from typing import List, Iterator
 from src.product import Product
+
+
+class CategoryIterator:
+    """Итератор для перебора продуктов в категории."""
+
+
+    def __init__(self, products: List[Product]):
+        self._products = products
+        self._index = 0
+
+
+    def __iter__(self) -> "CategoryIterator":
+        """Возвращает самого себя как итератор."""
+        return self
+
+
+    def __next__(self) -> Product:
+        """Возвращает следующий продукт из категории."""
+        if self._index < len(self._products):
+            product = self._products[self._index]
+            self._index += 1
+            return product
+        raise StopIteration
 
 
 class Category:
@@ -45,3 +68,8 @@ class Category:
         """Строковое представление категории."""
         total_quantity = sum(product.quantity for product in self.__products)
         return f"{self.name}, количество продуктов: {total_quantity} шт."
+
+
+    def __iter__(self) -> Iterator[Product]:
+        """Позволяет итерироваться по продуктам категории."""
+        return CategoryIterator(self.__products)
