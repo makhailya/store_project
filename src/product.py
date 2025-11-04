@@ -25,9 +25,7 @@ class Product:
         else:
             self.__price = value
 
-
-    def __add__(self, other: "Product") -> float:
-        """Позволяет складывать товары — возвращает суммарную стоимость на складе."""
-        if not isinstance(other, Product):
-            raise TypeError("Можно складывать только объекты класса Product")
+    def __add__(self, other):
+        if type(self) is not type(other):
+            raise TypeError("Нельзя складывать товары разных типов.")
         return self.price * self.quantity + other.price * other.quantity

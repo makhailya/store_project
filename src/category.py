@@ -73,3 +73,15 @@ class Category:
     def __iter__(self) -> Iterator[Product]:
         """Позволяет итерироваться по продуктам категории."""
         return CategoryIterator(self.__products)
+
+def add_product(self, product):
+    from src.product import Product
+    from src.smartphone import Smartphone
+    from src.lawn_grass import LawnGrass
+
+    if not isinstance(product, (Product, Smartphone, LawnGrass)):
+        raise TypeError("Можно добавить только объекты классов Product, Smartphone или LawnGrass.")
+
+    self.__products.append(product)
+    Category.product_count += 1
+    
