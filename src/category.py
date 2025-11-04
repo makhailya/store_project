@@ -1,20 +1,19 @@
 from typing import List, Iterator
 from src.product import Product
+from src.smartphone import Smartphone
+from src.lawn_grass import LawnGrass
 
 
 class CategoryIterator:
     """Итератор для перебора продуктов в категории."""
 
-
     def __init__(self, products: List[Product]):
         self._products = products
         self._index = 0
 
-
     def __iter__(self) -> "CategoryIterator":
         """Возвращает самого себя как итератор."""
         return self
-
 
     def __next__(self) -> Product:
         """Возвращает следующий продукт из категории."""
@@ -31,14 +30,12 @@ class Category:
     category_count = 0
     product_count = 0
 
-
     def __init__(self, name: str, description: str, products: List[Product] = None):
         self.name = name
         self.description = description
         self.__products = products or []
         Category.category_count += 1
         Category.product_count += len(self.__products)
-
 
     def add_product(self, product: Product) -> None:
         """Добавление продукта в категорию."""
@@ -58,30 +55,24 @@ class Category:
         """Возвращает строковое представление всех товаров."""
         return "\n".join(str(p) for p in self.__products) + "\n"
 
-
     def __contains__(self, item: str) -> bool:
         """Позволяет проверять наличие продукта по имени."""
         return any(product.name == item for product in self.__products)
-
 
     def __str__(self) -> str:
         """Строковое представление категории."""
         total_quantity = sum(product.quantity for product in self.__products)
         return f"{self.name}, количество продуктов: {total_quantity} шт."
 
-
     def __iter__(self) -> Iterator[Product]:
         """Позволяет итерироваться по продуктам категории."""
         return CategoryIterator(self.__products)
 
+
 def add_product(self, product):
-    from src.product import Product
-    from src.smartphone import Smartphone
-    from src.lawn_grass import LawnGrass
 
     if not isinstance(product, (Product, Smartphone, LawnGrass)):
         raise TypeError("Можно добавить только объекты классов Product, Smartphone или LawnGrass.")
 
     self.__products.append(product)
     Category.product_count += 1
-    

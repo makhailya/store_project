@@ -4,7 +4,6 @@ from src.product import Product
 class LawnGrass(Product):
     """Класс, описывающий траву газонную как наследник Product."""
 
-
     def __init__(self, name: str, description: str, price: float, quantity: int,
                  country: str, germination_period: int, color: str):
         super().__init__(name, description, price, quantity)
