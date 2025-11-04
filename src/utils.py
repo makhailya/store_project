@@ -1,4 +1,5 @@
 import json
+
 from src.category import Category
 from src.product import Product
 
@@ -12,9 +13,6 @@ def load_from_json(filepath: str) -> list[Category]:
 
     categories = []
     for cat in data:
-        products = [
-            Product(p["name"], p["description"], p["price"], p["quantity"])
-            for p in cat["products"]
-        ]
+        products = [Product(p["name"], p["description"], p["price"], p["quantity"]) for p in cat["products"]]
         categories.append(Category(cat["name"], cat["description"], products))
     return categories

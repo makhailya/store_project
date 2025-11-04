@@ -1,7 +1,8 @@
-from typing import List, Iterator
+from typing import Iterator, List
+
+from src.lawn_grass import LawnGrass
 from src.product import Product
 from src.smartphone import Smartphone
-from src.lawn_grass import LawnGrass
 
 
 class CategoryIterator:

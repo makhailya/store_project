@@ -1,6 +1,7 @@
-from src.product import Product
-from src.category import Category
 import pytest
+
+from src.category import Category
+from src.product import Product
 
 
 def test_product_str():

@@ -1,7 +1,8 @@
 import pytest
-from src.smartphone import Smartphone
-from src.lawn_grass import LawnGrass
+
 from src.category import Category
+from src.lawn_grass import LawnGrass
+from src.smartphone import Smartphone
 
 
 def test_smartphone_creation():
