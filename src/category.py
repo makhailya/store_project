@@ -39,14 +39,19 @@ class Category:
         Category.product_count += len(self.__products)
 
     def add_product(self, product: Product) -> None:
-        """Добавление продукта в категорию."""
         if not isinstance(product, (Product, Smartphone, LawnGrass)):
             raise TypeError("Можно добавить только объекты классов Product, Smartphone или LawnGrass.")
+        # ... остальной код
+
+        # Проверка на дубликат (опционально)
+        if product in self.__products:
+            raise ValueError("Продукт уже добавлен в категорию.")
+
         self.__products.append(product)
         Category.product_count += 1
 
     @property
-    def products(self):
+    def products(self) -> List[Product]:
         """Возвращает список продуктов (объекты класса Product)."""
         return self.__products
 
