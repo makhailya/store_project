@@ -35,10 +35,7 @@ class Product:
         """Создаёт новый продукт из словаря."""
         return cls(data["name"], data["description"], data["price"], data["quantity"])
 
-
     def __eq__(self, other):
         if not isinstance(other, Product):
             return False
-        return (self.name == other.name and
-                self.price == other.price and
-                self.quantity == other.quantity)
+        return self.name == other.name and self.price == other.price and self.quantity == other.quantity
