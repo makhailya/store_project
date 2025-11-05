@@ -3,52 +3,25 @@ platform darwin -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0
 rootdir: /Users/makhailya/store_project
 configfile: pyproject.toml
 plugins: cov-7.0.0
-collected 18 items
+collected 17 items
 
-tests/test_additional_coverage.py ....                                   [ 22%]
-tests/test_inheritance.py .....                                          [ 50%]
-tests/test_iterator.py .                                                 [ 55%]
-tests/test_models.py ...                                                 [ 72%]
-tests/test_product_category.py .F..F                                     [100%]
+tests/test_additional_coverage.py ....                                   [ 23%]
+tests/test_inheritance.py .....                                          [ 52%]
+tests/test_iterator.py .                                                 [ 58%]
+tests/test_models.py ...                                                 [ 76%]
+tests/test_product_category.py ....                                      [100%]
 
-=================================== FAILURES ===================================
-__________________________ test_category_add_product ___________________________
-
-product_data = {'description': 'Бородинский', 'name': 'Хлеб', 'price': 60.0, 'quantity': 5}
-
-    def test_category_add_product(product_data):
-        product = Product(**product_data)
-        category = Category("Продукты", "Еда")
-        category.add_product(product)
->       assert "Хлеб" in category.products
-E       AssertionError: assert 'Хлеб' in [<src.product.Product object at 0x108e48670>]
-E        +  where [<src.product.Product object at 0x108e48670>] = <src.category.Category object at 0x108ddead0>.products
-
-tests/test_product_category.py:23: AssertionError
-___________________________ test_new_product_creates ___________________________
-
-product_data = {'description': 'Бородинский', 'name': 'Хлеб', 'price': 60.0, 'quantity': 5}
-
-    def test_new_product_creates(product_data):
->       product = Product.new_product(product_data)
-                  ^^^^^^^^^^^^^^^^^^^
-E       AttributeError: type object 'Product' has no attribute 'new_product'
-
-tests/test_product_category.py:42: AttributeError
 ================================ tests coverage ================================
 _______________ coverage: platform darwin, python 3.13.7-final-0 _______________
 
 Name                Stmts   Miss  Cover
 ---------------------------------------
 src/__init__.py         0      0   100%
-src/category.py        48      6    88%
+src/category.py        43      4    91%
 src/lawn_grass.py       7      0   100%
-src/product.py         20      1    95%
+src/product.py         23      1    96%
 src/smartphone.py       8      0   100%
 src/utils.py           11     11     0%
 ---------------------------------------
-TOTAL                  94     18    81%
-=========================== short test summary info ============================
-FAILED tests/test_product_category.py::test_category_add_product - AssertionE...
-FAILED tests/test_product_category.py::test_new_product_creates - AttributeEr...
-========================= 2 failed, 16 passed in 0.04s =========================
+TOTAL                  92     16    83%
+============================== 17 passed in 0.03s ==============================
