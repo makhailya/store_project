@@ -21,8 +21,8 @@ product_data = {'description': 'Бородинский', 'name': 'Хлеб', 'pr
         category = Category("Продукты", "Еда")
         category.add_product(product)
 >       assert "Хлеб" in category.products
-E       AssertionError: assert 'Хлеб' in [<src.product.Product object at 0x10b053a10>]
-E        +  where [<src.product.Product object at 0x10b053a10>] = <src.category.Category object at 0x10b026e00>.products
+E       AssertionError: assert 'Хлеб' in [<src.product.Product object at 0x108e48670>]
+E        +  where [<src.product.Product object at 0x108e48670>] = <src.category.Category object at 0x108ddead0>.products
 
 tests/test_product_category.py:23: AssertionError
 ___________________________ test_new_product_creates ___________________________
@@ -51,4 +51,4 @@ TOTAL                  94     18    81%
 =========================== short test summary info ============================
 FAILED tests/test_product_category.py::test_category_add_product - AssertionE...
 FAILED tests/test_product_category.py::test_new_product_creates - AttributeEr...
-========================= 2 failed, 16 passed in 0.05s =========================
+========================= 2 failed, 16 passed in 0.04s =========================
