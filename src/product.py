@@ -25,6 +25,12 @@ class Product:
             self.__price = value
 
     def __add__(self, other):
+        """Позволяет складывать товары одного типа."""
         if type(self) is not type(other):
             raise TypeError("Нельзя складывать товары разных типов.")
         return self.price * self.quantity + other.price * other.quantity
+
+    @classmethod
+    def new_product(cls, data: dict):
+        """Создаёт новый продукт из словаря."""
+        return cls(data["name"], data["description"], data["price"], data["quantity"])

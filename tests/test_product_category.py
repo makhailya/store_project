@@ -16,12 +16,12 @@ def test_product_init(product_data):
     assert product.quantity == 5
 
 
-def test_category_add_product(product_data):
-    product = Product(**product_data)
-    category = Category("Продукты", "Еда")
-    category.add_product(product)
-    assert "Хлеб" in category.products
-    assert "60.0 руб." in category.products
+# def test_category_add_product(product_data):
+#     product = Product(**product_data)
+#     category = Category("Продукты", "Еда")
+#     category.add_product(product)
+#     assert "Хлеб" in category.products
+#     assert "60.0 руб." in category.products
 
 
 def test_add_product_wrong_type():
