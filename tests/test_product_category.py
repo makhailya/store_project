@@ -43,3 +43,11 @@ def test_new_product_creates(product_data):
     assert isinstance(product, Product)
     assert product.name == "Хлеб"
     assert product.price == 60.0
+
+
+def test_add_duplicate_product():
+    product = Product("A", "Desc", 100, 5)
+    category = Category("Test", "Desc")
+    category.add_product(product)
+    category.add_product(product)
+    assert len(category.products) == 1
