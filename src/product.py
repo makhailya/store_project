@@ -130,9 +130,4 @@ class Product(BaseProduct, CreationLoggerMixin):
         if not required_fields.issubset(data.keys()):
             raise ValueError("Отсутствуют обязательные поля для создания продукта")
 
-        return cls(
-            data["name"],
-            data["description"],
-            data["price"],
-            data["quantity"]
-        )
+        return cls(data["name"], data["description"], data["price"], data["quantity"])

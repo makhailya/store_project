@@ -1,6 +1,6 @@
+from src.lawn_grass import LawnGrass
 from src.product import Product
 from src.smartphone import Smartphone
-from src.lawn_grass import LawnGrass
 
 
 class Category:
@@ -24,7 +24,6 @@ class Category:
         else:
             return item in self.__products
 
-
     def add_product(self, product):
         # Проверка типа
         if not isinstance(product, (Product, Smartphone, LawnGrass)):
@@ -47,7 +46,6 @@ class Category:
     def __str__(self) -> str:
         total_quantity = sum(product.quantity for product in self.__products)
         return f"{self.name}, количество товаров: {total_quantity} шт."
-
 
     def __iter__(self):
         return iter(self.__products)

@@ -1,6 +1,8 @@
 import json
-from src.product import Product
+
 import src
+from src.product import Product
+
 
 def load_from_json(filepath: str):
     with open(filepath, "r", encoding="utf-8") as f:
@@ -28,12 +30,7 @@ def load_from_json(filepath: str):
                 if not isinstance(price, (int, float)) or price <= 0:
                     continue
 
-                product = Product(
-                    product_data["name"],
-                    product_data["description"],
-                    price,
-                    product_data["quantity"]
-                )
+                product = Product(product_data["name"], product_data["description"], price, product_data["quantity"])
                 category.add_product(product)
             except (ValueError, TypeError):
                 continue
