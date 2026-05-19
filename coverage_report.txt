@@ -1,0 +1,31 @@
+============================= test session starts ==============================
+platform darwin -- Python 3.13.7, pytest-8.4.2, pluggy-1.6.0
+rootdir: /Users/makhailya/store_project
+configfile: pyproject.toml
+plugins: cov-7.0.0
+collected 25 items
+
+tests/test_abstract_and_mixin.py ...                                     [ 12%]
+tests/test_additional_coverage.py ....                                   [ 28%]
+tests/test_inheritance.py .....                                          [ 48%]
+tests/test_iterator.py .                                                 [ 52%]
+tests/test_models.py ...                                                 [ 64%]
+tests/test_product_category.py .....                                     [ 84%]
+tests/test_utils.py ....                                                 [100%]
+
+================================ tests coverage ================================
+_______________ coverage: platform darwin, python 3.13.7-final-0 _______________
+
+Name                  Stmts   Miss  Cover
+-----------------------------------------
+src/__init__.py           0      0   100%
+src/base_product.py      11      1    91%
+src/category.py          45      2    96%
+src/lawn_grass.py         7      0   100%
+src/mixins.py             5      0   100%
+src/product.py           25      2    92%
+src/smartphone.py         8      0   100%
+src/utils.py             21      1    95%
+-----------------------------------------
+TOTAL                   122      6    95%
+============================== 25 passed in 0.04s ==============================
