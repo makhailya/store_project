@@ -8,8 +8,8 @@ from src.product import Product
 class Category:
     """Класс, описывающий категорию товаров."""
 
-    category_count = 0
-    product_count = 0
+    category_count = 0 #счетчик
+    product_count = 0  #счетчик
 
     def __init__(self, name: str, description: str, products: list[Product]):
         """
