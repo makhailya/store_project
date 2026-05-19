@@ -30,12 +30,11 @@ def test_add_product_wrong_type():
         category.add_product("не продукт")
 
 
-def test_price_setter_negative(capsys):
+def test_price_setter_negative():
+    """Проверяет, что установка отрицательной цены вызывает ValueError."""
     product = Product("Хлеб", "Бородинский", 50, 3)
-    product.price = -10
-    captured = capsys.readouterr()
-    assert "Цена не должна быть нулевая или отрицательная" in captured.out
-    assert product.price == 50
+    with pytest.raises(ValueError, match="Цена не должна быть нулевая или отрицательная"):
+        product.price = -10
 
 
 def test_new_product_creates(product_data):
@@ -43,3 +42,11 @@ def test_new_product_creates(product_data):
     assert isinstance(product, Product)
     assert product.name == "Хлеб"
     assert product.price == 60.0
+
+
+def test_add_duplicate_product():
+    product = Product("A", "Desc", 100, 5)
+    category = Category("Test", "Desc")
+    category.add_product(product)
+    category.add_product(product)
+    assert len(category.products) == 1

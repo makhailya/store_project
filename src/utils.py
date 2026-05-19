@@ -1,38 +1,39 @@
 import json
 
-from src.category import Category
+import src
 from src.product import Product
 
 
-def load_from_json(filepath: str) -> list[Category]:
-    """
-    Загружает категории и продукты из JSON-файла.
-    Если ключ отсутствует или значение некорректно — пропускает элемент.
-    """
+def load_from_json(filepath: str):
     with open(filepath, "r", encoding="utf-8") as f:
         data = json.load(f)
 
     categories = []
-    for cat in data:
-        # Проверяем наличие обязательных полей категории
-        if "name" not in cat or "description" not in cat:
-            continue  # Пропускаем некорректную категорию
+    for item in data:
+        name = item.get("name")
+        description = item.get("description")
 
-        # Обрабатываем продукты: пропускаем те, у которых нет обязательных полей
-        products = []
-        if "products" in cat and isinstance(cat["products"], list):
-            for p in cat["products"]:
-                if all(key in p for key in ["name", "description", "price", "quantity"]):
-                    try:
-                        product = Product(
-                            p["name"],
-                            p["description"],
-                            float(p["price"]),  # Приводим к float
-                            int(p["quantity"]),  # Приводим к int
-                        )
-                        products.append(product)
-                    except (ValueError, TypeError):
-                        continue  # Пропускаем продукт с некорректными числовыми значениями
+        # Пропускаем категории без name или description
+        if name is None or description is None:
+            continue
 
-        categories.append(Category(cat["name"], cat["description"], products))
+        products_data = item.get("products", [])
+        category = src.Category(name, description)
+
+        for product_data in products_data:
+            try:
+                required_fields = {"name", "description", "price", "quantity"}
+                if not required_fields.issubset(product_data.keys()):
+                    continue
+
+                price = product_data["price"]
+                if not isinstance(price, (int, float)) or price <= 0:
+                    continue
+
+                product = Product(product_data["name"], product_data["description"], price, product_data["quantity"])
+                category.add_product(product)
+            except (ValueError, TypeError):
+                continue
+
+        categories.append(category)
     return categories
