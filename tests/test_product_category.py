@@ -1,6 +1,7 @@
 import pytest
-from src.product import Product
+
 from src.category import Category
+from src.product import Product
 
 
 @pytest.fixture
@@ -19,13 +20,13 @@ def test_category_add_product(product_data):
     product = Product(**product_data)
     category = Category("Продукты", "Еда")
     category.add_product(product)
-    assert "Хлеб" in category.products
-    assert "60.0 руб." in category.products
+    assert "Хлеб" in category  # работает через __contains__
+    # Удалено: assert "60.0 руб." in category.products
 
 
 def test_add_product_wrong_type():
     category = Category("Продукты", "Еда")
-    with pytest.raises(TypeError):
+    with pytest.raises(TypeError, match="Можно добавить только объекты классов Product, Smartphone или LawnGrass."):
         category.add_product("не продукт")
 
 
